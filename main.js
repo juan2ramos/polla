@@ -1,4 +1,6 @@
 
+var tableResult = "<table>";
+
 function Persona(nombre, marcadores)
 {
     this.nombre = nombre;
@@ -7,36 +9,40 @@ function Persona(nombre, marcadores)
     this.getPuntaje = function()
     {
         var puntajeParcial = 0;
+        console.log(this.nombre)
+        tableResult += "<tr> <td> " + this.nombre + "</td></tr>" 
         for(i in this.marcadores){
             
             if( marcadoresGlobal[i][0] == marcadores[i][0] &&
                 marcadoresGlobal[i][1] == marcadores[i][1]){
                 puntajeParcial = puntajeParcial + 5;
-                console.log(i);
-                console.log('marcador global');
-                console.log(marcadoresGlobal[i][0]);
-                console.log(marcadoresGlobal[i][1]);
-                console.log('marcador');
-                console.log(marcadores[i][0]);
-                console.log(marcadores[i][1]);
-                console.log('PUNFAJE');
-                console.log(5);
+                tableResult += "<tr>" 
+                    + "<td>"  + i + "</td>"  
+                    + "<td>"  +"marcador global : " + marcadoresGlobal[i][0] + "  -  " + marcadoresGlobal[i][1] + "</td>"  
+                    +  "<td>"  + " Marcador : " +  marcadores[i][0] + " - " + marcadores[i][1] + "</td>"  
+                    + "<td> Puntaje 5 </td>" 
+                    + "</tr>";
+
+
+                console.log(i + ' marcador global : ' + marcadoresGlobal[i][0] + "  -  " + marcadoresGlobal[i][1] + " Marcador : " +  marcadores[i][0] + " - " + marcadores[i][1] );
+                console.log('PUNTAJE 5');
                 continue;
             }
 
             if(marcadoresGlobal[i][0] == marcadoresGlobal[i][1] &&
-                marcadores[i][0] && marcadores[i][1] ){
+                marcadores[i][0] == marcadores[i][1] ){
                 puntajeParcial = puntajeParcial + 3;
 
-                console.log(i);
-                console.log('marcador global');
-                console.log(marcadoresGlobal[i][0]);
-                console.log(marcadoresGlobal[i][1]);
-                console.log('marcador');
-                console.log(marcadores[i][0]);
-                console.log(marcadores[i][1]);
-                console.log('PUNFAJE');
-                console.log(3);
+                tableResult += "<tr>" 
+                    + "<td>"  + i + "</td>"  
+                    + "<td>"  +"marcador global : " + marcadoresGlobal[i][0] + "  -  " + marcadoresGlobal[i][1] + "</td>"  
+                    +  "<td>"  + " Marcador : " +  marcadores[i][0] + " - " + marcadores[i][1] + "</td>"  
+                    + "<td> Puntaje 3 </td>" 
+                    + "</tr>";
+
+               console.log(i + ' marcador global : ' + marcadoresGlobal[i][0] + "  -  " + marcadoresGlobal[i][1] + " Marcador : " +  marcadores[i][0] + " - " +marcadores[i][1] );
+                console.log('PUNTAJE 3');
+               
 
                 continue;
             }
@@ -48,15 +54,16 @@ function Persona(nombre, marcadores)
                 marcadores[i][0] < marcadores[i][1])){
                 puntajeParcial = puntajeParcial + 2;
 
-                console.log(i);
-                console.log('marcador global');
-                console.log(marcadoresGlobal[i][0]);
-                console.log(marcadoresGlobal[i][1]);
-                console.log('marcador');
-                console.log(marcadores[i][0]);
-                console.log(marcadores[i][1]);
-                console.log('PUNFAJE');
-                console.log(2);
+                tableResult += "<tr>" 
+                    + "<td>"  + i + "</td>"  
+                    + "<td>"  +"marcador global : " + marcadoresGlobal[i][0] + "  -  " + marcadoresGlobal[i][1] + "</td>"  
+                    +  "<td>"  + " Marcador : " +  marcadores[i][0] + " - " + marcadores[i][1] + "</td>"  
+                    + "<td> Puntaje 2</td>" 
+                    + "</tr>";
+
+               console.log(i + ' marcador global : ' + marcadoresGlobal[i][0] + "  -  " + marcadoresGlobal[i][1] + " Marcador : " +  marcadores[i][0] + " - " +marcadores[i][1] );
+                console.log('PUNTAJE 2');
+      
                 continue;
 
             }
@@ -66,29 +73,29 @@ function Persona(nombre, marcadores)
 
             if(mgt == mt){
                 puntajeParcial = puntajeParcial + 1;
+                tableResult += "<tr>" 
+                    + "<td>"  + i + "</td>"  
+                    + "<td>"  +"marcador global : " + marcadoresGlobal[i][0] + "  -  " + marcadoresGlobal[i][1] + "</td>"  
+                    +  "<td>"  + " Marcador : " +  marcadores[i][0] + " - " + marcadores[i][1] + "</td>"  
+                    + "<td> Puntaje 1 </td>" 
+                    + "</tr>";
 
-                console.log(i);
-                console.log('marcador global');
-                console.log(marcadoresGlobal[i][0]);
-                console.log(marcadoresGlobal[i][1]);
-                console.log('marcador');
-                console.log(marcadores[i][0]);
-                console.log(marcadores[i][1]);
-                console.log('PUNFAJE');
-                console.log(1);
+               console.log(i + ' marcador global : ' + marcadoresGlobal[i][0] + "  -  " + marcadoresGlobal[i][1]+ " Marcador : " +  marcadores[i][0] + " - " +marcadores[i][1] );
+               console.log('PUNTAJE 1'  );
+     
                 continue;
             }
 
         }
         this.puntaje = puntajeParcial;
+        tableResult += "<tr> <td> </td> <td> </td><td> </td><td> Puntaje total " + this.puntaje;+ "</td></tr>" 
         return this.puntaje;
     }
 }
 
 function inicio ()
 {
-    //nombre = document.getElementById('id')
-    //nombre.innerText = isa.nombre;
+   
     var participantes = {
         "isa" : new Persona("Isa", isaPuntajes),
         "german" :new Persona("german", germanPuntajes),
@@ -105,7 +112,9 @@ function inicio ()
     for(i in participantes){
        console.log(i + " : " +participantes[i].getPuntaje()); 
     }
-    
+     nombre = document.getElementById('id')
+     console.log(tableResult)
+    nombre.innerHTML = tableResult;
     
 }
 
