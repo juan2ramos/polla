@@ -12,13 +12,32 @@ function Persona(nombre, marcadores)
             if( marcadoresGlobal[i][0] == marcadores[i][0] &&
                 marcadoresGlobal[i][1] == marcadores[i][1]){
                 puntajeParcial = puntajeParcial + 5;
-            
+                console.log(i);
+                console.log('marcador global');
+                console.log(marcadoresGlobal[i][0]);
+                console.log(marcadoresGlobal[i][1]);
+                console.log('marcador');
+                console.log(marcadores[i][0]);
+                console.log(marcadores[i][1]);
+                console.log('PUNFAJE');
+                console.log(5);
                 continue;
             }
 
             if(marcadoresGlobal[i][0] == marcadoresGlobal[i][1] &&
                 marcadores[i][0] && marcadores[i][1] ){
                 puntajeParcial = puntajeParcial + 3;
+
+                console.log(i);
+                console.log('marcador global');
+                console.log(marcadoresGlobal[i][0]);
+                console.log(marcadoresGlobal[i][1]);
+                console.log('marcador');
+                console.log(marcadores[i][0]);
+                console.log(marcadores[i][1]);
+                console.log('PUNFAJE');
+                console.log(3);
+
                 continue;
             }
 
@@ -28,6 +47,16 @@ function Persona(nombre, marcadores)
                 (marcadoresGlobal[i][0] < marcadoresGlobal[i][1] && 
                 marcadores[i][0] < marcadores[i][1])){
                 puntajeParcial = puntajeParcial + 2;
+
+                console.log(i);
+                console.log('marcador global');
+                console.log(marcadoresGlobal[i][0]);
+                console.log(marcadoresGlobal[i][1]);
+                console.log('marcador');
+                console.log(marcadores[i][0]);
+                console.log(marcadores[i][1]);
+                console.log('PUNFAJE');
+                console.log(2);
                 continue;
 
             }
@@ -37,6 +66,16 @@ function Persona(nombre, marcadores)
 
             if(mgt == mt){
                 puntajeParcial = puntajeParcial + 1;
+
+                console.log(i);
+                console.log('marcador global');
+                console.log(marcadoresGlobal[i][0]);
+                console.log(marcadoresGlobal[i][1]);
+                console.log('marcador');
+                console.log(marcadores[i][0]);
+                console.log(marcadores[i][1]);
+                console.log('PUNFAJE');
+                console.log(1);
                 continue;
             }
 
