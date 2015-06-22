@@ -11,12 +11,14 @@ function Persona(nombre, marcadores)
         var puntajeParcial = 0;
         console.log(this.nombre)
         tableResult += "<tr> <td> " + this.nombre + "</td></tr>" 
+        var j = 0
         for(i in this.marcadores){
-            
+            j++;
             if( marcadoresGlobal[i][0] == marcadores[i][0] &&
                 marcadoresGlobal[i][1] == marcadores[i][1]){
                 puntajeParcial = puntajeParcial + 5;
                 tableResult += "<tr>" 
+                    + "<td>"  + j + "</td>" 
                     + "<td>"  + i + "</td>"  
                     + "<td>"  +"marcador global : " + marcadoresGlobal[i][0] + "  -  " + marcadoresGlobal[i][1] + "</td>"  
                     +  "<td>"  + " Marcador : " +  marcadores[i][0] + " - " + marcadores[i][1] + "</td>"  
@@ -34,6 +36,7 @@ function Persona(nombre, marcadores)
                 puntajeParcial = puntajeParcial + 3;
 
                 tableResult += "<tr>" 
+                    + "<td>"  + j + "</td>" 
                     + "<td>"  + i + "</td>"  
                     + "<td>"  +"marcador global : " + marcadoresGlobal[i][0] + "  -  " + marcadoresGlobal[i][1] + "</td>"  
                     +  "<td>"  + " Marcador : " +  marcadores[i][0] + " - " + marcadores[i][1] + "</td>"  
@@ -55,6 +58,7 @@ function Persona(nombre, marcadores)
                 puntajeParcial = puntajeParcial + 2;
 
                 tableResult += "<tr>" 
+                    + "<td>"  + j + "</td>" 
                     + "<td>"  + i + "</td>"  
                     + "<td>"  +"marcador global : " + marcadoresGlobal[i][0] + "  -  " + marcadoresGlobal[i][1] + "</td>"  
                     +  "<td>"  + " Marcador : " +  marcadores[i][0] + " - " + marcadores[i][1] + "</td>"  
@@ -74,6 +78,7 @@ function Persona(nombre, marcadores)
             if(mgt == mt){
                 puntajeParcial = puntajeParcial + 1;
                 tableResult += "<tr>" 
+                    + "<td>"  + j + "</td>" 
                     + "<td>"  + i + "</td>"  
                     + "<td>"  +"marcador global : " + marcadoresGlobal[i][0] + "  -  " + marcadoresGlobal[i][1] + "</td>"  
                     +  "<td>"  + " Marcador : " +  marcadores[i][0] + " - " + marcadores[i][1] + "</td>"  
@@ -85,8 +90,15 @@ function Persona(nombre, marcadores)
      
                 continue;
             }
-
+        tableResult += "<tr>" 
+                    + "<td>"  + j + "</td>" 
+                    + "<td>"  + i + "</td>"  
+                    + "<td>"  +"marcador global : " + marcadoresGlobal[i][0] + "  -  " + marcadoresGlobal[i][1] + "</td>"  
+                    +  "<td>"  + " Marcador : " +  marcadores[i][0] + " - " + marcadores[i][1] + "</td>"  
+                    + "<td> Puntaje 0 </td>" 
+                    + "</tr>";
         }
+
         this.puntaje = puntajeParcial;
         tableResult += "<tr> <td> </td> <td> </td><td> </td><td> Puntaje total " + this.puntaje;+ "</td></tr>" 
         return this.puntaje;
@@ -109,14 +121,35 @@ function inicio ()
         "lenin" :new Persona("lenin", leninPuntajes)
     
     }
-    for(i in participantes){
-       console.log(i + " : " +participantes[i].getPuntaje()); 
+    var resultados = [],
+           tablaPosicion = "<table>",
+           i = 0;
+    for(j in participantes){
+       puntajeF = participantes[j].getPuntaje(); 
+       resultados.push(  {"nombre": j,  "puntaje" : puntajeF} );
     }
-     nombre = document.getElementById('id')
-     console.log(tableResult)
-    nombre.innerHTML = tableResult;
-    
+    resultados.sort(compare);
+    for(p in resultados){
+        i++;
+        tablaPosicion += "<tr><td>"+ i +"</td><td>" + resultados[p].nombre + "</td>" +  "<td>" + resultados[p].puntaje + "</td></tr>";
+    }
+    tablaPosicion += "</table>"
+
+    idTablaResultados = document.getElementById('resultados')
+    idTablaResultados.innerHTML = tableResult;  
+
+    idTablaPosicion= document.getElementById('posicion')
+    idTablaPosicion.innerHTML = tablaPosicion;  
 }
+function compare(a,b) {
+      if (a.puntaje > b.puntaje)
+        return -1;
+      if (a.puntaje <b.puntaje)
+        return 1;
+      return 0;
+}
+
+
 
 
 
